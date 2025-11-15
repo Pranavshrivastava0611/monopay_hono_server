@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import { Connection, PublicKey } from '@solana/web3.js';
 
 // 👇 We'll create the Supabase client inside the request handler using env
-const app = new Hono<{ Bindings: { SUPABASE_URL_KEY: string; SUPABASE_ANON_KEY: string,RPC_URL:string} }>();
+const app = new Hono<{ Bindings: { SUPABASE_URL_KEY: string; SUPABASE_ANON_KEY: string,RPC_URL_API:string} }>();
 
 app.get('/service/config', async (c) => {
   const apiKey = c.req.query('apikey');
@@ -35,7 +35,7 @@ app.post('/verify', async (c) => {
     }
 
     // 1️⃣ Connect to Solana
-    const connection = new Connection("https://api.devnet.solana.com");
+    const connection = new Connection(`https://mainnet.helius-rpc.com/?api-key=${c.env.RPC_URL_API}`);
 
     // 2️⃣ Fetch transaction details
     const tx = await connection.getTransaction(txSignature, {
