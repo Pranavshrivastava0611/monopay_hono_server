@@ -35,7 +35,7 @@ app.post('/verify', async (c) => {
     }
 
     // 1️⃣ Connect to Solana
-    const connection = new Connection(c.env.RPC_URL || 'https://api.mainnet-beta.solana.com', 'finalized');
+    const connection = new Connection("https://api.devnet.solana.com");
 
     // 2️⃣ Fetch transaction details
     const tx = await connection.getTransaction(txSignature, {
