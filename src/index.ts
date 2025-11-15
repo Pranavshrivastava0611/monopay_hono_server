@@ -35,7 +35,7 @@ app.post('/verify', async (c) => {
     }
 
     // 1️⃣ Connect to Solana
-    const connection = new Connection(`https://mainnet.helius-rpc.com/?api-key=${c.env.RPC_URL_API}`);
+    const connection = new Connection(`https://devnet.helius-rpc.com/?api-key=${c.env.RPC_URL_API}`);
 
     // 2️⃣ Fetch transaction details
     const tx = await connection.getTransaction(txSignature, {
